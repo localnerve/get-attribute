@@ -1,0 +1,45 @@
+{
+  "name": "get-attribute",
+  "version": "1.0.0",
+  "description": "Get an attribute from a webpage, echo to stdout",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --testTimeout=300000",
+    "test": "jest . --runInBand"
+  },
+  "bin": {
+    "get-attribute": "./bin/get-attribute"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/localnerve/get-attribute.git"
+  },
+  "keywords": [
+    "puppeteer",
+    "web",
+    "attribute"
+  ],
+  "author": "Alex Grant <alex@localnerve.com> (https://www.localnerve.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/localnerve/get-attribute/issues"
+  },
+  "homepage": "https://github.com/localnerve/get-attribute#readme",
+  "dependencies": {
+    "puppeteer": "^22.6.5",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.1.0",
+    "@eslint/js": "^9.1.1",
+    "eslint-plugin-jest": "^28.2.0",
+    "express": "^4.19.2",
+    "globals": "^15.0.0",
+    "jest": "^29.7.0",
+    "server-destroy": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
