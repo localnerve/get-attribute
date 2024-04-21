@@ -27,4 +27,19 @@ describe('get-attribute', () => {
     expect(value?.split('/')).toContain('videos');
     expect(value).toEqual(expect.stringMatching(new RegExp(`^${origin}`)));
   }, 10000);
+
+  /* eslint-disable jest/no-conditional-expect */
+  test('should handle bad url', () => {
+    return new Promise((resolve, reject) => {
+      getAttr('http://bad.local', selector, attribute)
+        .then(() => {
+          reject(new Error('should have thrown an error'));
+        })
+        .catch(e => {
+          expect(e.message).toEqual(expect.stringContaining('ERR_NAME_NOT_RESOLVED'));
+          resolve();
+        });
+    });
+  }, 10000);
+  /* eslint-enable jest/no-conditional-expect */
 });
