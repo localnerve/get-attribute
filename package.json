@@ -1,5 +1,5 @@
 {
-  "name": "get-attribute",
+  "name": "@localnerve/get-attribute",
   "version": "1.0.0",
   "description": "Get an attribute from a webpage, echo to stdout",
   "main": "lib/index.js",
