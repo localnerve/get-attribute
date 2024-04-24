@@ -41,5 +41,18 @@ describe('get-attribute', () => {
         });
     });
   }, 10000);
+
+  test('should handle timeout', () => {
+    return new Promise((resolve, reject) => {
+      getAttr(`${testConfig.origin}/longtime-6000`, selector, attribute, {
+        timeout: 2000
+      })
+        .then(attributeValue => {
+          expect(attributeValue).toBeNull();
+          resolve();
+        })
+        .catch(reject)
+    });
+  });
   /* eslint-enable jest/no-conditional-expect */
 });

@@ -7,7 +7,8 @@ const ignores = {
   ignores: [
     'bin/**',
     'node_modules/**',
-    'tmp/**'
+    'tmp/**',
+    'coverage/**'
   ]
 };
 
