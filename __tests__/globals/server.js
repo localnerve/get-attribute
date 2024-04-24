@@ -17,6 +17,11 @@ module.exports = {
   start: (rootDir, port, cb) => {
     const server = express();
     server.use(express.static(rootDir));
+    server.get('/longtime-6000', (req, res) => {
+      setTimeout(() => {
+        res.send('A slow response');
+      }, 6000);
+    });
     const httpServer = server.listen(parseInt(port, 10), (err) => {
       if (cb) {
         cb(err, httpServer);
