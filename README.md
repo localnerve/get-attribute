@@ -8,10 +8,10 @@
 
 ## Example
 
-Grab the full url from a specific anchor tag of interest:
+Grab the full url from a specific anchor tag of interest (all options shown):
 
 ```shell
-get-attribute --url=https://host.com/path --selector='a[href^="/videos"]' --attribute=href --useprop=true --timeout=5000
+get-attribute --url=https://host.com/path --selector='a[href^="/videos"]' --attribute=href --useprop=true --timeout=5000 --launchargs='{"headless":true}'
 
 # echoes the first matching href with full url from property: 'https://host.com/path/videos/123456789'
 ```
