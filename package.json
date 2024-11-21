@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/get-attribute",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "Get an attribute from a webpage, echo to stdout",
   "main": "lib/index.js",
   "scripts": {
@@ -27,13 +27,13 @@
   },
   "homepage": "https://github.com/localnerve/get-attribute#readme",
   "dependencies": {
-    "puppeteer": "^23.8.0",
+    "puppeteer": "^23.9.0",
     "yargs": "^17.7.2",
     "debug": "^4.3.7"
   },
   "devDependencies": {
-    "eslint": "^9.14.0",
-    "@eslint/js": "^9.14.0",
+    "eslint": "^9.15.0",
+    "@eslint/js": "^9.15.0",
     "eslint-plugin-jest": "^28.9.0",
     "express": "^4.21.1",
     "globals": "^15.12.0",
