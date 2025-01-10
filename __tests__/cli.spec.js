@@ -1,5 +1,8 @@
 /**
  * Test the cli module
+ * 
+ * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
+ * Licensed under the MIT license.
  */
 const getArgs = require('../lib/cli');
 

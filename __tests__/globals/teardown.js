@@ -1,3 +1,9 @@
+/**
+ * Teardown function
+ * 
+ * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
+ * Licensed under the MIT license.
+ */
 
 function globalTeardown () {
   return new Promise(resolve => {

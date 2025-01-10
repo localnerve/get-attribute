@@ -1,5 +1,8 @@
 /**
  * Test command from the top
+ * 
+ * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
+ * Licensed under the MIT license.
  */
 /* eslint-disable jest/expect-expect */
 
