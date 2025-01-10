@@ -1,7 +1,8 @@
 /**
  * Create a local web server for tests.
  *
- * Copyright (c) 2024, Alex Grant, LocalNerve, contributors
+ * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
+ * Licensed under the MIT license.
  */
 const path = require('node:path');
 const express = require('express');
