@@ -1,12 +1,13 @@
 {
   "name": "@localnerve/get-attribute",
-  "version": "3.7.1",
+  "version": "3.8.0",
   "description": "Get an attribute from a webpage, echo to stdout",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
-    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --testTimeout=300000",
-    "test": "jest . --runInBand"
+    "test:debug": "node --experimental-vm-modules --inspect-brk node_modules/.bin/jest --runInBand --testTimeout=300000",
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest . --runInBand",
+    "test:cli": "bin/get-attribute --url=https://m.twitch.tv/gigaohmbiological/home --selector='a[href^=\"/videos\"]' --attribute=href --useprop=true --timeout=5000 --launchargs='{\"headless\":true}'"
   },
   "bin": {
     "get-attribute": "./bin/get-attribute"
@@ -27,7 +28,7 @@
   },
   "homepage": "https://github.com/localnerve/get-attribute#readme",
   "dependencies": {
-    "puppeteer": "^24.7.2",
+    "puppeteer": "^24.8.0",
     "yargs": "^17.7.2",
     "debug": "^4.4.0"
   },
