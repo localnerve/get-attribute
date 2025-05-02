@@ -5,8 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
-    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --testTimeout=300000",
-    "test": "jest . --runInBand"
+    "test:debug": "node --experimental-vm-modules --inspect-brk node_modules/.bin/jest --runInBand --testTimeout=300000",
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest . --runInBand",
+    "test:cli": "bin/get-attribute --url=https://m.twitch.tv/gigaohmbiological/home --selector='a[href^=\"/videos\"]' --attribute=href --useprop=true --timeout=5000 --launchargs='{\"headless\":true}'"
   },
   "bin": {
     "get-attribute": "./bin/get-attribute"
