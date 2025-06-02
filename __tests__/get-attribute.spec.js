@@ -4,8 +4,8 @@
  * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
  * Licensed under the MIT license.
  */
-const getAttr = require('../lib/get-attribute');
-const {config:testConfig} = require('./globals/server.js');
+import getAttr from '../lib/get-attribute.js';
+import { config as testConfig } from './globals/server.js';
 
 describe('get-attribute', () => {
   const origin = testConfig.origin;

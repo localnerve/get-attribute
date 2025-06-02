@@ -6,16 +6,20 @@
  */
 /* eslint-disable jest/expect-expect */
 
-const path = require('node:path');
-const { spawn } = require('node:child_process');
-const testServer = require('./globals/server');
+import path from 'node:path';
+import url from 'node:url';
+import { expect, describe, jest, test } from '@jest/globals';
+import { spawn } from 'node:child_process';
+import testServer from './globals/server.js';
+
+const thisDirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 describe('top level invocation', () => {
   const url = `${testServer.config.origin}/twitch-gigaohmbio.html`;
   const selector = 'a[href^="/videos"]';
   const attribute = 'href';
   const useprop = 'true';
-  const command = path.resolve(__dirname, '../bin/get-attribute');
+  const command = path.resolve(thisDirname, '../bin/get-attribute');
 
   function exitCode (done, actualCode) {
     done.actualCode = actualCode;
