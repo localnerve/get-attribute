@@ -4,7 +4,7 @@
  * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
  * Licensed under the MIT license.
  */
-const getArgs = require('../lib/cli');
+import getArgs from '../lib/cli.js';
 
 describe('get-args', () => {
   const noargs = [];
@@ -56,7 +56,7 @@ describe('get-args', () => {
   test('bad launchargs', () => {
     const badLaunchArgs = allargs.slice();
     badLaunchArgs[7] = '--launchargs=monkey';
-    args = getArgs(badLaunchArgs);
+    const args = getArgs(badLaunchArgs);
     expect(args).toBeNull();
   });
 

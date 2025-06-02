@@ -6,6 +6,8 @@
 ![Verify](https://github.com/localnerve/get-attribute/workflows/Verify/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/localnerve/get-attribute/badge.svg?branch=main)](https://coveralls.io/github/localnerve/get-attribute?branch=main)
 
+> See [repo releases](https://github.com/localnerve/get-attribute/releases) for change notes
+
 ## Example
 
 Grab the full url from a specific anchor tag of interest (all options shown):
