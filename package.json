@@ -34,8 +34,8 @@
     "@localnerve/debug": "^1.0.7"
   },
   "devDependencies": {
-    "eslint": "^9.33.0",
-    "@eslint/js": "^9.33.0",
+    "eslint": "^9.34.0",
+    "@eslint/js": "^9.34.0",
     "eslint-plugin-jest": "^29.0.1",
     "express": "^5.1.0",
     "globals": "^16.3.0",
