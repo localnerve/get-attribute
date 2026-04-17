@@ -4,11 +4,11 @@
  * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
  * Licensed under the MIT license.
  */
-/* eslint-disable jest/expect-expect */
 
 import path from 'node:path';
 import url from 'node:url';
-import { expect, describe, jest, test } from '@jest/globals';
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { spawn } from 'node:child_process';
 import testServer from './globals/server.js';
 
@@ -26,32 +26,32 @@ describe('top level invocation', () => {
     done();
   }
 
-  function run (expectedCode, args) {
+  function run (t, expectedCode, args) {
     return new Promise((resolve, reject) => {
       const cp = spawn(command, args, {
         stdio: 'inherit'
       });
-      const exit = jest.fn();
+      const exit = t.mock.fn();
       cp.on('error', reject);
       cp.on('exit', exitCode.bind(null, exit));
       cp.on('close', () => {
-        expect(exit.actualCode).toEqual(expectedCode);
-        expect(exit).toHaveBeenCalled();
+        assert.strictEqual(exit.actualCode, expectedCode);
+        assert.strictEqual(exit.mock.callCount(), 1);
         resolve();
       });
     });
   }
 
-  test('no input', () => {
-    return run(1, []);
+  it('no input', t => {
+    return run(t, 1, []);
   });
 
-  test('bad args', () => {
-    return run(1, ['one', 'two', 'three']);
+  it('bad args', t => {
+    return run(t, 1, ['one', 'two', 'three']);
   });
 
-  test('bad selector', () => {
-    return run(2, [
+  it('bad selector', t => {
+    return run(t, 2, [
       `--url=${url}`,
       '--selector=nomatch',
       `--attribute=${attribute}`,
@@ -59,8 +59,8 @@ describe('top level invocation', () => {
     ]);
   }, 10000);
 
-  test('good arguments', () => {
-    return run(0, [
+  it('good arguments', t => {
+    return run(t, 0, [
       `--url=${url}`,
       `--selector=${selector}`,
       `--attribute=${attribute}`,
