@@ -1,13 +1,12 @@
 {
   "name": "@localnerve/get-attribute",
-  "version": "4.28.0",
+  "version": "4.29.0",
   "description": "Get an attribute from a webpage, echo to stdout",
   "type": "module",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
-    "test:debug": "node --experimental-vm-modules --inspect-brk node_modules/.bin/jest --runInBand --testTimeout=300000",
-    "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest . --runInBand",
+    "test": "node -e \"require('fs').mkdirSync('coverage',{recursive:true})\" && node --import ./__tests__/globals/index.js --test --experimental-test-coverage --test-coverage-exclude=\"**/__tests__/**\" --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=./coverage/lcov.info --experimental-test-isolation=none \"./__tests__/**/*.spec.js\"",
     "test:cli": "bin/get-attribute --url=https://m.twitch.tv/gigaohmbiological/home --selector='a[href^=\"/videos\"]' --attribute=href --useprop=true --timeout=5000 --launchargs='{\"headless\":true}'"
   },
   "bin": {
@@ -30,20 +29,19 @@
   "homepage": "https://github.com/localnerve/get-attribute#readme",
   "dependencies": {
     "@localnerve/debug": "^1.0.13",
-    "puppeteer": "^24.40.0",
+    "puppeteer": "^24.41.0",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "baseline-browser-mapping": "^2.10.9",
-    "eslint": "^10.0.3",
-    "eslint-plugin-jest": "^29.15.0",
+    "eslint": "^10.2.1",
+    "eslint-plugin-n": "^17.24.0",
     "express": "^5.2.1",
-    "globals": "^17.4.0",
-    "jest": "^30.3.0",
+    "globals": "^17.5.0",
     "server-destroy": "^1.0.1"
   },
   "overrides": {
+    "glob": "^13.0.6"
   },
   "engines": {
     "node": "^20.19.0 || ^22.12.0 || >=23"

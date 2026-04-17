@@ -4,6 +4,8 @@
  * Copyright (c) 2025, Alex Grant <alex@localNerve.com> (https://www.localnerve.com)
  * Licensed under the MIT license.
  */
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import getArgs from '../lib/cli.js';
 
 describe('get-args', () => {
@@ -25,62 +27,62 @@ describe('get-args', () => {
     `--useprop=${useprop}`,
     `--timeout=${timeout}`,
     `--launchargs=${JSON.stringify({
-      headless: true
+      headless
     })}`
   ];
 
-  test('no arguments', () => {
+  it('no arguments', () => {
     const args = getArgs(noargs);
-    expect(args).toBeNull();
+    assert.ok(args === null);
   });
 
-  test('bad arguments', () => {
+  it('bad arguments', () => {
     const args = getArgs(badargs);
-    expect(args).toBeNull();
+    assert.ok(args === null);
   });
 
-  test('bad useprop', () => {
+  it('bad useprop', () => {
     const badUseProp = allargs.slice();
     badUseProp[5] = '--useprop=monkey';
     const args = getArgs(badUseProp);
-    expect(args).toBeNull();
+    assert.ok(args === null);
   });
 
-  test('bad timeout', () => {
+  it('bad timeout', () => {
     const badTimeout = allargs.slice();
     badTimeout[6] = '--timeout=monkey';
     const args = getArgs(badTimeout);
-    expect(args).toBeNull();
+    assert.ok(args === null);
   });
 
-  test('bad launchargs', () => {
+  it('bad launchargs', () => {
     const badLaunchArgs = allargs.slice();
     badLaunchArgs[7] = '--launchargs=monkey';
     const args = getArgs(badLaunchArgs);
-    expect(args).toBeNull();
+    assert.ok(args === null);
   });
 
-  test('incomplete args', () => {
+  it('incomplete args', () => {
     const args = getArgs(goodargs.slice(3));
-    expect(args).toBeNull();
+    assert.ok(args === null);
   });
 
-  test('good args', () => {
+  it('good args', () => {
     const args = getArgs(goodargs);
-    expect(args).not.toBeNull();
-    expect(args.url).toEqual(url);
-    expect(args.selector).toEqual(selector);
-    expect(args.attribute).toEqual(attribute);
+    assert.ok(args !== null);
+    assert.strictEqual(args.url, url);
+    assert.strictEqual(args.selector, selector);
+    assert.strictEqual(args.attribute, attribute);
   });
 
-  test('complete args', () => {
+  it('complete args', () => {
     const args = getArgs(allargs);
-    expect(args).not.toBeNull();
-    expect(args.url).toEqual(url);
-    expect(args.selector).toEqual(selector);
-    expect(args.attribute).toEqual(attribute);
-    expect(args.useprop).toEqual(useprop);
-    expect(args.timeout).toEqual(timeout);
-    expect(args.launchargs).toEqual({headless});
+    assert.ok(args !== null);
+    assert.strictEqual(args.url, url);
+    assert.strictEqual(args.selector, selector);
+    assert.strictEqual(args.attribute, attribute);
+    assert.strictEqual(args.useprop, useprop);
+    assert.strictEqual(args.timeout, timeout);
+    assert.deepStrictEqual(args.launchargs, {headless});
   });
 });

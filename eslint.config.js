@@ -1,6 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import jest from 'eslint-plugin-jest';
+import n from 'eslint-plugin-n';
 
 const ignores = {
   name: 'ignores',
@@ -16,16 +16,17 @@ const tests = {
   name: 'tests',
   files: ['__tests__/**'],
   ...js.configs['flat/recommended'],
-  ...jest.configs['flat/recommended'],
   languageOptions: {
     globals: {
-      ...jest.environments.globals.globals,
+      test: 'readonly',
+      it: 'readonly',
+      before: 'readonly',
+      after: 'readonly',
       ...globals.node
     }
   },
   rules: {
     ...js.configs.recommended.rules,
-    ...jest.configs.recommended.rules
   }
 };
 
@@ -45,8 +46,9 @@ const lib = {
       MemberExpression: 1
     }],
     quotes: [2, 'single'],
-    'dot-notation': [2, {allowKeywords: true}]
+    'dot-notation': [2, {allowKeywords: true}],
+     'n/no-process-exit': 'off'
   }
 }
 
-export default [ignores, tests, lib];
+export default [ignores, n.configs['flat/recommended-module'], tests, lib];
