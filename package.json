@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/get-attribute",
-  "version": "4.32.0",
+  "version": "5.0.0",
   "description": "Get an attribute from a webpage, echo to stdout",
   "type": "module",
   "main": "lib/index.js",
@@ -40,10 +40,7 @@
     "globals": "^17.6.0",
     "server-destroy": "^1.0.1"
   },
-  "overrides": {
-    "glob": "^13.0.6"
-  },
   "engines": {
-    "node": "^20.19.0 || ^22.12.0 || >=23"
+    "node": ">=22.12.0"
   }
 }
