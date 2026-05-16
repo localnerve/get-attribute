@@ -15,6 +15,7 @@ const ignores = {
 const tests = {
   name: 'tests',
   files: ['__tests__/**'],
+  plugins: { n },
   ...js.configs['flat/recommended'],
   languageOptions: {
     globals: {
@@ -27,12 +28,14 @@ const tests = {
   },
   rules: {
     ...js.configs.recommended.rules,
+    ...n.configs['flat/recommended'].rules,
   }
 };
 
 const lib = {
   name: 'lib',
   files: ['lib/**'],
+  plugins: { n },
   ...js.configs['flat/recommended'],
   languageOptions: {
     globals: {
@@ -41,6 +44,7 @@ const lib = {
   },
   rules: {
     ...js.configs.recommended.rules,
+    ...n.configs['flat/recommended'].rules,
     indent: [2, 2, {
       SwitchCase: 1,
       MemberExpression: 1
