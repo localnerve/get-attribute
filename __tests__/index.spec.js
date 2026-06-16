@@ -11,6 +11,7 @@ import assert from 'node:assert';
 import { describe, it } from 'node:test';
 import { spawn } from 'node:child_process';
 import testServer from './globals/server.js';
+import { launchArgs } from './launchargs.js';
 
 const thisDirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -42,6 +43,11 @@ describe('top level invocation', () => {
     });
   }
 
+  function addLaunchArgs (args) {
+    args.push(`--launchargs=${JSON.stringify(launchArgs)}`);
+    return args;
+  }
+
   it('no input', t => {
     return run(t, 1, []);
   });
@@ -51,20 +57,20 @@ describe('top level invocation', () => {
   });
 
   it('bad selector', t => {
-    return run(t, 2, [
+    return run(t, 2, addLaunchArgs([
       `--url=${url}`,
       '--selector=nomatch',
       `--attribute=${attribute}`,
       `--timeout=4000`
-    ]);
+    ]));
   }, 10000);
 
   it('good arguments', t => {
-    return run(t, 0, [
+    return run(t, 0, addLaunchArgs([
       `--url=${url}`,
       `--selector=${selector}`,
       `--attribute=${attribute}`,
       `--useprop=${useprop}`
-    ]);
+    ]));
   }, 10000);
 });

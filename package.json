@@ -1,12 +1,13 @@
 {
   "name": "@localnerve/get-attribute",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Get an attribute from a webpage, echo to stdout",
   "type": "module",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "node -e \"require('fs').mkdirSync('coverage',{recursive:true})\" && node --import ./__tests__/globals/index.js --test --experimental-test-coverage --test-coverage-exclude=\"**/__tests__/**\" --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=./coverage/lcov.info --experimental-test-isolation=none \"./__tests__/**/*.spec.js\"",
+    "pretest": "node -e \"require('fs').rmSync('coverage',{recursive:true,force:true});require('fs').mkdirSync('coverage',{recursive:true})\"",
+    "test": "node --import ./__tests__/globals/index.js --test --experimental-test-coverage --test-coverage-exclude=\"**/__tests__/**\" --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=./coverage/lcov.info --experimental-test-isolation=none \"./__tests__/**/*.spec.js\"",
     "test:cli": "bin/get-attribute --url=https://m.twitch.tv/gigaohmbiological/home --selector='a[href^=\"/videos\"]' --attribute=href --useprop=true --timeout=5000 --launchargs='{\"headless\":true}'"
   },
   "bin": {
@@ -26,16 +27,26 @@
   "bugs": {
     "url": "https://github.com/localnerve/get-attribute/issues"
   },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/localnerve"
+    },
+    {
+      "type": "paypal",
+      "url": "https://www.paypal.com/ncp/payment/DHCB5GUYMGX5U"
+    }
+  ],
   "homepage": "https://github.com/localnerve/get-attribute#readme",
   "dependencies": {
-    "@localnerve/debug": "^1.0.13",
+    "@localnerve/debug": "^1.0.14",
     "puppeteer": "^25.1.0",
     "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "eslint": "^10.4.0",
-    "eslint-plugin-n": "^18.0.1",
+    "eslint": "^10.5.0",
+    "eslint-plugin-n": "^18.1.0",
     "express": "^5.2.1",
     "globals": "^17.6.0",
     "server-destroy": "^1.0.1"
