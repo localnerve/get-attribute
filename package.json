@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "pretest": "node -e \"require('fs').rmSync('coverage',{recursive:true,force:true});require('fs').mkdirSync('coverage',{recursive:true})\"",
     "test": "node --import ./__tests__/globals/index.js --test --experimental-test-coverage --test-coverage-exclude=\"**/__tests__/**\" --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=./coverage/lcov.info --experimental-test-isolation=none \"./__tests__/**/*.spec.js\"",
-    "test:cli": "bin/get-attribute --url=https://m.twitch.tv/gigaohmbiological/home --selector=\"a[href^='/videos']\" --attribute=href --useprop=true --timeout=5000 --launchargs=\"{'headless':true,'args': ['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage']}\""
+    "test:cli": "bin/get-attribute --url=https://m.twitch.tv/gigaohmbiological/home --selector='a[href^=\"/videos\"]' --attribute=href --useprop=true --timeout=5000 --launchargs='{\"headless\":true,\"args\":[\"--no-sandbox\",\"--disable-setuid-sandbox\",\"--disable-dev-shm-usage\"]}'"
   },
   "bin": {
     "get-attribute": "./bin/get-attribute"
