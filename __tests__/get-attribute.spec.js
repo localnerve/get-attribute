@@ -8,6 +8,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import getAttr from '../lib/get-attribute.js';
 import { config as testConfig } from './globals/server.js';
+import { launchArgs } from './launchargs.js';
 
 describe('get-attribute', () => {
   const origin = testConfig.origin;
@@ -18,7 +19,9 @@ describe('get-attribute', () => {
   const url = `${testConfig.origin}/twitch-gigaohmbio.html`;
 
   it('should get attribute', async () => {    
-    const value = await getAttr(url, selector, attribute);
+    const value = await getAttr(url, selector, attribute, {
+      launchArgs
+    });
 
     assert.ok(value?.split('/').includes('videos'));
     assert.match(value, /^\/videos/);
@@ -26,7 +29,8 @@ describe('get-attribute', () => {
 
   it('should get prop', async () => {
     const value = await getAttr(url, selector, attribute, {
-      useProp: true
+      useProp: true,
+      launchArgs
     });
 
     assert.ok(value?.split('/').includes('videos'));
@@ -35,7 +39,9 @@ describe('get-attribute', () => {
 
   it('should handle bad url', () => {
     return new Promise((resolve, reject) => {
-      getAttr('http://bad.local', selector, attribute)
+      getAttr('http://bad.local', selector, attribute, {
+        launchArgs
+      })
         .then(() => {
           reject(new Error('should have thrown an error'));
         })
@@ -49,7 +55,8 @@ describe('get-attribute', () => {
   it('should handle timeout', () => {
     return new Promise((resolve, reject) => {
       getAttr(`${testConfig.origin}/longtime-6000`, selector, attribute, {
-        timeout: 2000
+        timeout: 2000,
+        launchArgs
       })
         .then(attributeValue => {
           assert.ok(attributeValue === null);
