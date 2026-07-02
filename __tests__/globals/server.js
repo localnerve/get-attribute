@@ -25,7 +25,11 @@ export const start = (rootDir, port, cb) => {
       res.send('A slow response');
     }, 6000);
   });
-  const httpServer = server.listen(parseInt(port, 10), (err) => {
+  server.post('/shutdown', (req, res) => { // for e2e cli testing
+    res.sendStatus(200);
+    process.exit(0); // eslint-disable-line n/no-process-exit
+  });
+  const httpServer = server.listen(parseInt(port, 10), err => {
     if (cb) {
       cb(err, httpServer);
     }
